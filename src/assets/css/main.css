@@ -1,3 +1,8 @@
 html, body {
   min-height: 100vh;
+
+}
+
+.hoverAnim {
+  transition: 200ms ease-in-out;
 }
