@@ -1,29 +1,24 @@
 <template>
-  <div>
-    <div class="">
-      <div class="menu">TBK</div>
-      <div class="">Workbench</div>
-      <div class="">filters</div>
-      <div class="">Management</div>
-      <div class="">Unlock</div>
-      <div class="">Map</div>
-      <div class="">Search</div>
-    </div>
-    <div class="header">
-      <div class="search-line">Search</div>
-      <div class="settings">settings</div>
-      <div class="logo">LOGO</div>
+  <div class="min-h-screen bg-gray-100">
+    <div class="flex min-h-screen">
+      <Sidebar></Sidebar>
+      <div class="">main</div>
     </div>
   </div>
 
 </template>
 
 <script>
-export default {
+import Sidebar from '../components/Sidebar';
 
+export default {
+  components: {
+    Sidebar
+  }
 };
 
 </script>
 
 <style>
+
 </style>

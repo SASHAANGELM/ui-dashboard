@@ -6,6 +6,7 @@ import store from './store';
 
 import '@fortawesome/fontawesome-free/css/all.css';
 import './assets/css/tailwind.css';
+import './assets/css/main.css';
 
 Vue.config.productionTip = false;
 
