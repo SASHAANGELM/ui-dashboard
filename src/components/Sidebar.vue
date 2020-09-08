@@ -4,15 +4,15 @@
       <div class="ml-6 text-xl font-bold">
         TBK
       </div>
-      <button class="self-stretch px-3 bg-indigo-600 rounded-lg text-gray-500">
+      <button class="self-stretch px-3 rounded-lg text-gray-500 hover:bg-indigo-600 hoverAnim hover:text-gray-300">
         <i class="fas fa-ellipsis-v"></i>
       </button>
     </div>
 
     <div class="">
-      <button v-for="link in linkItems" :key="`sidebar-link-${link}`" class="block w-full my-1 bg-gray-800">
-        <i :class="link.icon"></i>
-        <span>{{ link.text}}</span>
+      <button v-for="link in linkItems" :key="`sidebar-link-${link}`" class="block w-full my-3 pl-16 py-3 rounded-lg text-left hover:bg-gray-800 hoverAnim">
+        <i :class="link.icon" class="mr-2"></i>
+        <span>{{link.text}}</span>
       </button>
     </div>
   </div>
@@ -33,24 +33,20 @@ export default {
           text: 'filters'
         },
         {
-          icon: '',
+          icon: 'fas fa-user-edit',
           text: 'Management'
         },
         {
-          icon: '',
+          icon: 'fas fa-unlock-alt',
           text: 'Unlock'
         },
         {
-          icon: '',
+          icon: 'fas fa-map-marker-alt',
           text: 'Map'
         },
         {
-          icon: '',
+          icon: 'fas fa-search',
           text: 'Search'
-        },
-        {
-          icon: '',
-          text: 'More'
         }
       ]
     };
