@@ -43,8 +43,19 @@
 
         <div class="flex space-x-16">
           <div class="w-2/6 ">
-            <div class="mb-6 text-gray-600 text-lg font-medium">Mocup</div>
-            <div class="h-40 bg-gray-900 rounded-xl"></div>
+            <div class="mb-6 text-gray-600 text-lg font-medium">Mockup</div>
+              <div v-for="item in taskMockup" :key="{item}" class="flex items-center justify-between h-24 p-3 mb-5 bg-white rounded-xl">
+                  <div class="h-16 w-16 bg-gray-900 rounded-xl bg-teal-200">
+                    <i :class="item.icon"></i>
+                  </div>
+                  <div class="flex flex-col">
+                    <span>{{item.taskName}}</span>
+                    <span>{{item.name}}</span>
+                  </div>
+                  <button class="self-stretch px-3 rounded-lg text-gray-500 hover:bg-gray-400 hoverAnim hover:text-gray-300">
+                    <i class="fas fa-ellipsis-v"></i>
+                  </button>
+              </div>
           </div>
           <div class="w-4/6">
             <div class="mb-6 text-gray-600 text-lg font-medium">Company</div>
@@ -67,6 +78,26 @@ export default {
   },
   data() {
     return {
+      taskMockup: [
+        {
+          taskName: 'AIR PLANE',
+          name: 'Daniel Gonzales',
+          icon: 'fas fa-plane-departure',
+          iconColor: ''
+        },
+        {
+          taskName: 'TELEPHONE',
+          name: 'Barbara Brown',
+          icon: 'fas fa-tty',
+          iconColor: ''
+        },
+        {
+          taskName: 'BUS',
+          name: 'Edward Martines',
+          icon: 'fas fa-bus-alt',
+          iconColor: ''
+        }
+      ],
       taskDescr: [
         {
           total: 480,
