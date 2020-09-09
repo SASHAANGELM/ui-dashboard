@@ -1,6 +1,6 @@
 <template>
   <div class="bg-gray-900 text-gray-100 w-80 rounded-3xl p-8">
-    <div class="flex justify-between items-center h-16 p-2 bg-indigo-500 rounded-xl">
+    <div class="flex justify-between items-center h-16 p-2 mb-10 bg-indigo-500 rounded-xl">
       <div class="ml-6 text-xl font-bold">
         TBK
       </div>
@@ -10,7 +10,7 @@
     </div>
 
     <div class="">
-      <button v-for="link in linkItems" :key="`sidebar-link-${link}`" class="block w-full my-3 pl-16 py-3 rounded-lg text-left hover:bg-gray-800 hoverAnim">
+      <button v-for="link in linkItems" :key="`sidebar-link-${link}`" class="block w-full my-3 pl-16 py-3 rounded-lg text-left text-gray-600 hover:bg-gray-800 hover:text-gray-200 hoverAnim">
         <i :class="link.icon" class="mr-2"></i>
         <span>{{link.text}}</span>
       </button>
