@@ -6,3 +6,7 @@ html, body {
 .hoverAnim {
   transition: 200ms ease-in-out;
 }
+
+.progresLine {
+  width: 128px;
+}
