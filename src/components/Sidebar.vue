@@ -10,7 +10,7 @@
     </div>
 
     <div class="">
-      <button v-for="link in linkItems" :key="`sidebar-link-${link}`" class="block w-full my-3 pl-16 py-3 rounded-lg text-left text-gray-600 hover:bg-gray-800 hover:text-gray-200 hoverAnim">
+      <button v-for="link in linkItems" :key="`sidebar-link-${link.text}`" class="block w-full my-3 pl-16 py-3 rounded-lg text-left text-gray-600 hover:bg-gray-800 hover:text-gray-200 hoverAnim">
         <i :class="link.icon" class="mr-2"></i>
         <span>{{link.text}}</span>
       </button>

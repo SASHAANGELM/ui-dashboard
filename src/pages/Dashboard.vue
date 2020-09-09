@@ -14,12 +14,12 @@
           <div class="w-3/6">
             <div class="mb-6 text-gray-600 text-lg font-medium">Today</div>
             <div class="wraper flex items-center">
-              <div v-for="task in taskDescr" :key="task" class="w-40 h-56 rounded-lg mr-3 p-4 hover:shadow-xl" :class="task.color">
-                <div class="font-bold text-4xl mb-3" :class="task.textColor">{{task.total}}</div>
+              <div v-for="task in taskCards" :key="task" class="w-40 h-56 rounded-lg mr-3 p-4 hover:shadow-xl" :class="task.color">
+                <div class="font-bold text-4xl mb-3" :class="task.textColor">{{ task.total }}</div>
                 <div class="flex flex-col justify-between h-32">
-                    <span :class="task.textColor">{{task.descr}}</span>
+                    <span :class="task.textColor">{{ task.description }}</span>
                     <div class="wraper">
-                      <div :class="task.textColor"> <span class="text-gray-400">{{task.progresText}}</span> {{task.progres}}</div>
+                      <div :class="task.textColor"> <span class="text-gray-400">{{ task.progresText }}</span> {{ task.progres }}</div>
                       <div :class="task.progresLine"></div>
                     </div>
                 </div>
@@ -41,6 +41,21 @@
           </div>
         </div>
 
+        <!--  -->
+        <div class="flex space-x-16 mb-10">
+          <div class="w-5/12">
+            <div class="mb-6 text-gray-600 text-lg font-medium">Today</div>
+            <div class="wraper flex items-center">
+              <TaskCard v-for="task in taskCards" :key="`task-card-${task.description}`" :task="task"></TaskCard>
+            </div>
+          </div>
+          <div class="w-7/12">
+            <div class="mb-6 text-gray-600 text-lg font-medium">Automatically assigned</div>
+            <TaskCard :task="blackTaskCard"></TaskCard>
+          </div>
+        </div>
+        <!--  -->
+
         <div class="flex space-x-16">
           <div class="w-2/6 ">
             <div class="mb-6 text-gray-600 text-lg font-medium">Mocup</div>
@@ -59,50 +74,48 @@
 <script>
 import Sidebar from '../components/Sidebar';
 import Header from '../components/Header';
+import TaskCard, { CARD_TYPES } from '../components/Dashboard/TaskCard';
 
 export default {
   components: {
     Sidebar,
-    Header
+    Header,
+    TaskCard
   },
   data() {
     return {
-      taskDescr: [
+      taskCards: [
         {
+          type: CARD_TYPES.FOCUSED,
           total: 480,
-          descr: 'Go on',
-          progres: '100%',
-          color: 'bg-indigo-400',
-          textColor: 'text-gray-200',
-          progresText: 'Finish',
-          progresLine: 'h-2 w-full bg-teal-300 rounded-lg'
+          description: 'Go on',
+          progress: 1
         },
         {
+          type: CARD_TYPES.DEFAULT,
           total: 180,
-          descr: 'Intention',
-          progres: '60%',
-          color: 'bg-white',
-          textColor: 'text-gray-900',
-          progresText: 'Finish',
-          progresLine: 'h-2 w-full bg-teal-300 rounded-lg'
+          description: 'Intention',
+          progress: 0.6
         },
         {
+          type: CARD_TYPES.DEFAULT,
           total: 72,
-          descr: 'Deal',
-          progres: '48%',
-          color: 'bg-white',
-          textColor: 'text-gray-900',
-          progresText: 'Finish',
-          progresLine: 'h-2 w-full bg-teal-300 rounded-lg'
+          description: 'Deal',
+          progress: 0.48
         },
         {
+          type: CARD_TYPES.BLOCKED,
           total: 72,
-          descr: 'No itention',
-          color: 'bg-red-400',
-          progres: '',
-          textColor: 'text-gray-900'
+          description: 'No itention',
+          progress: null
         }
-      ]
+      ],
+      blackTaskCard: {
+        type: CARD_TYPES.BLACK,
+        total: 800,
+        description: 'Distribution',
+        progress: 1
+      }
     };
   }
 };
