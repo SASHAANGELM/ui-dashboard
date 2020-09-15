@@ -7,6 +7,10 @@ html, body {
   transition: 200ms ease-in-out;
 }
 
+.animation {
+  transition: 200ms ease-in-out;
+}
+
 .progresLine {
   width: 128px;
 }
