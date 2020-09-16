@@ -2,7 +2,8 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../pages/Home.vue';
 import Dashboard from '../pages/Dashboard.vue';
-import Dashboard2 from '../pages/Dashboard2.vue';
+
+import taskboardRoutes from '../modules/taskboard/routes';
 
 Vue.use(VueRouter);
 
@@ -17,11 +18,9 @@ const routes = [
     name: 'Dashboard',
     component: Dashboard
   },
-  {
-    path: '/dashboard2',
-    name: 'Dashboard2',
-    component: Dashboard2
-  },
+
+  ...taskboardRoutes,
+
   {
     path: '/',
     redirect: '/dashboard'

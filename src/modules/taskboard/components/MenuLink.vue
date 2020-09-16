@@ -1,9 +1,9 @@
 <template>
-  <button class="link" :class="{ active: link.active }" @click="linkClick">
+  <router-link tag="button" :to="link.to" class="link" :class="{ active: link.active }" @click="linkClick">
     <div v-if="link.notifications > 0" class="absolute flex items-center justify-center top-0 h-5 w-5 -ml-1 -mt-1 bg-white rounded-full text-xs">{{ link.notifications }}</div>
     <i :class="getIconClass" class="flex-shrink-0 flex justify-center items-center h-12 animation"></i>
     <div v-if="longHover" class="text-xs font-bold">{{ link.text }}</div>
-  </button>
+  </router-link>
 </template>
 
 <script>
@@ -31,7 +31,6 @@ export default {
       const classes = {};
       classes[icon] = true;
       classes[w] = true;
-      console.log('getIconClass', classes);
       return classes;
     }
   },
