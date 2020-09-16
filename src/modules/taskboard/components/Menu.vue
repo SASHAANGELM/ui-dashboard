@@ -1,34 +1,14 @@
 <template>
-  <div class="flex min-h-screen bg-pink-200">
-    <div :class="sidebarClass" class="flex flex-col justify-between pt-16 pb-2 animation overflow-x-hidden" @mouseenter="hoverStart" @mouseleave="hoverEnd">
+  <div :class="sidebarClass" class="flex flex-col justify-between pt-16 pb-2 animation overflow-x-hidden" @mouseenter="hoverStart" @mouseleave="hoverEnd">
       <div>
         <MenuLink v-for="link in menuList" :key="`menu-link-${link.text}`" :link="link" :hover="hover" :longHover="longHover" @click="setActive(link)"></MenuLink>
       </div>
       <MenuLink :link="settingsLink" :hover="hover" :longHover="longHover" @click="setActive(settingsLink)"></MenuLink>
     </div>
-    <div class="flex-1 flex bg-white rounded-l-2xl">
-      <div class="w-80 p-4 bg-gray-200 rounded-2xl">
-        Left Menu
-      </div>
-
-      <div class="p-4">
-        <div class="px-4 text-xl">Sales Dashboard</div>
-
-        <div>hover: {{ hover }}</div>
-        <div>longHover: {{ longHover }}</div>
-      </div>
-    </div>
-  </div>
 </template>
 
 <script>
-import MenuLink from '../components/Dashboard2/MenuLink';
-
-// function trottle(f, ms) {
-//   setTimeout(() => {
-//     f.call();
-//   }, ms);
-// }
+import MenuLink from './MenuLink';
 
 export default {
   components: {
@@ -41,26 +21,37 @@ export default {
 
       menuList: [
         {
+          text: 'Tasks',
+          icon: 'fas fa-columns',
+          to: '/taskboard/tasks',
+          notifications: 0,
+          active: true
+        },
+        {
           text: 'Orders',
           icon: 'fas fa-shopping-basket',
+          to: '/taskboard/orders',
           notifications: 2,
-          active: true
+          active: false
         },
         {
           text: 'Conversations',
           icon: 'fas fa-comments',
+          to: '/taskboard/conversations',
           notifications: 5,
           active: false
         },
         {
           text: 'Warehouse',
           icon: 'fas fa-warehouse',
+          to: '/taskboard/warehouse',
           notifications: 0,
           active: false
         },
         {
           text: 'Reports',
           icon: 'fas fa-file-invoice-dollar',
+          to: '/taskboard/reports',
           notifications: 0,
           active: false
         }
@@ -68,11 +59,13 @@ export default {
       settingsLink: {
         text: 'Settings',
         icon: 'fas fa-cog',
+        to: '/taskboard/settings',
         notifications: 0,
         active: false
       }
     };
   },
+
   computed: {
     sidebarClass() {
       const width = this.longHover ? 'w-64' : this.hover ? 'w-16' : 'w-8';
@@ -100,15 +93,11 @@ export default {
           }, 2000);
         });
         this.longHover = true;
-        console.log('resolve');
       } catch {}
     },
     hoverEnd() {
       this.longHover = false;
       this.hover = false;
-    },
-    test() {
-      console.log('test');
     },
 
     setActive(link) {
